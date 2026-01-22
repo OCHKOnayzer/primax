@@ -3,8 +3,6 @@ import clsx from "clsx";
 
 import { ButtonProps } from "./types";
 
-
-
 export const Button: React.FC<ButtonProps> = ({
   children,
   variant,
@@ -16,11 +14,9 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   className,
 }) => {
-
   const variantButtonStyles = {
     default: "text-gray-900,",
-    bordered:
-      `border-[2px]  ${foreground ? `border-[${foreground}]` : '#ffffff53'} rounded-[10px] text-gray-900 hover:border-[${hoverForeground}]`,
+    bordered: `border-[2px]  ${foreground ? `border-[${foreground}]` : "#ffffff53"} rounded-[10px] text-gray-900 hover:border-[${hoverForeground}]`,
   };
   const sizesButtonsStyles = {
     sm: "px-1 py-2 text-sm",

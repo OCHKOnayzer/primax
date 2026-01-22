@@ -7,7 +7,7 @@ export interface ButtonProps extends CommonProps {
   variant: ButtonVariant;
   type: ButtonType;
   foreground?: string;
-  hoverForeground?: '#ffffffad' | string;
+  hoverForeground?: "#ffffffad" | string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   href?: string;
 }
