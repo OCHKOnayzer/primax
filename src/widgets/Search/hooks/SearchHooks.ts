@@ -1,5 +1,5 @@
-// import { useEffect,useState } from "react";
+type TInputSearch = {
+  value: string;
+};
 
-// export function use
-
-// export function
+export const useInputSearch = ({ value }: { value: TInputSearch }) => {};
