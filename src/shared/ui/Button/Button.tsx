@@ -8,15 +8,13 @@ export const Button: React.FC<ButtonProps> = ({
   variant,
   size,
   type,
-  foreground,
-  hoverForeground,
   onClick,
   disabled,
   className,
 }) => {
   const variantButtonStyles = {
-    default: "text-gray-900,",
-    bordered: `border-[2px]  ${foreground ? `border-[${foreground}]` : "#ffffff53"} rounded-[10px] text-gray-900 hover:border-[${hoverForeground}]`,
+    default: "text-gray-900",
+    bordered: `border-[2px] border-[#ededed81] rounded-[10px] text-gray-900`,
   };
   const sizesButtonsStyles = {
     sm: "px-1 py-2 text-sm",
