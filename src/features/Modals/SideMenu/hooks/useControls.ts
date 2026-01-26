@@ -10,7 +10,6 @@ export function useControls() {
   const start = () =>
     controls.start({
       x: 0,
-      backdropFilter: "blur(6px)",
       transition: { type: "spring", stiffness: 100, damping: 18 },
     });
 
