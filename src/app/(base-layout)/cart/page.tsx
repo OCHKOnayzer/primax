@@ -1,5 +1,5 @@
 import React from "react";
-import Cart from "./Cart";
+import { Cart } from "@/features";
 
 const page = () => {
   return (
