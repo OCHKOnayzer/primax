@@ -18,25 +18,29 @@ export const SideMenuModal = ({
   const { controls, closing, start, handleClose } = useControls();
 
   useEffect(() => {
-    if (!closing) {
-      if (isOpen) start();
-      if (isAnimatingClose) handleClose();
-    }
-  }, [isOpen, isAnimatingClose, closing]);
+    if (isOpen && !closing) start();
+  }, [isOpen, closing]);
+
+  useEffect(() => {
+    if (isAnimatingClose && !closing) handleClose();
+  }, [isAnimatingClose, closing]);
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           key="side-menu"
-          className="fixed left-0 top-0 h-full w-[20vw] bg-white z-40 shadow-lg flex justify-start"
+          className="flex h-fit w-fit"
           initial={{ x: "-100%", backdropFilter: "blur(0px)" }}
           animate={controls}
-          onClick={(e) => e.stopPropagation()}
         >
+          <SideMenuList />
           <Button
-            onClick={handleClose}
-            className="fixed top-4 left-[calc(20vw+16px)] text-white hover:text-black hover:bg-gray-200 transition-colors z-50 shadow-lg"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClose();
+            }}
+            className="h-fit m-2 text-white hover:text-black hover:bg-gray-200 transition-colors z-50 shadow-lg"
             variant={ButtonVariant.bordered}
             type={ButtonType.button}
             size={CommonSize.md}
@@ -44,7 +48,6 @@ export const SideMenuModal = ({
           >
             x
           </Button>
-          <SideMenuList />
         </motion.div>
       )}
     </AnimatePresence>
