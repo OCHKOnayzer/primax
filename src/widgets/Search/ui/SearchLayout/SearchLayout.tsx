@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/shared";
 import React, { FC, PropsWithChildren, useState, useEffect } from "react";
 
