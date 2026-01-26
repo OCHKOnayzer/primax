@@ -10,10 +10,7 @@ export const CurrentModal = () => {
   const { currentModal } = useModal();
 
   return (
-    <div
-      onClick={() => setIsAnimatingClose(true)}
-      className="h-full w-full border-2"
-    >
+    <div onClick={() => setIsAnimatingClose(true)} className="h-full w-full">
       {/* {switch()} */}
 
       <SideMenuModal isAnimatingClose={isAnimatingClose} />
