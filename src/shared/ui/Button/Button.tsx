@@ -13,8 +13,8 @@ export const Button: React.FC<ButtonProps> = ({
   className,
 }) => {
   const variantButtonStyles = {
-    default: "text-gray-900",
-    bordered: `border-[2px] border-[#ededed81] rounded-[10px] text-gray-900`,
+    default: "text-white primary-bg-color",
+    bordered: `border-[2px] border-[#ededed81] text-gray-900`,
   };
   const sizesButtonsStyles = {
     sm: "px-1 py-2 text-sm",
@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       disabled={disabled}
       className={clsx(
-        "transition font-medium disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer",
+        "rounded-[10px] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer",
         variantButtonStyles[variant],
         sizesButtonsStyles[size],
         className,
