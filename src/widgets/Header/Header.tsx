@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { CurrentModalEnum } from "@/shared";
-import { SearchBar } from "@/features/SearchBar/ui/SearchBar";
+import { SearchBar } from "@/features";
 import { Button } from "@/shared";
 import { useModal } from "@/shared";
 import { usePathname } from "next/navigation";
