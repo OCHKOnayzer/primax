@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { Search } from "../Search";
+import { CurrentModalEnum } from "@/shared";
+import { SearchBar } from "@/features/SearchBar/ui/SearchBar";
 import { Button } from "@/shared";
 import { useModal } from "@/shared";
 import { usePathname } from "next/navigation";
@@ -12,7 +13,13 @@ import { ButtonVariant, ButtonType } from "@/shared/ui/Button";
 import { CommonSize } from "@/types";
 
 export const Header = () => {
-  const openModal = useModal((state) => state.openModalWindow);
+  const openModalWindow = useModal((state) => state.openModalWindow);
+  const setCurrentModal = useModal((state) => state.setCurrentModal);
+
+  function openModal() {
+    openModalWindow();
+    setCurrentModal(CurrentModalEnum.SideMenuModal);
+  }
 
   const pathname = usePathname();
   const router = useRouter();
@@ -32,7 +39,7 @@ export const Header = () => {
             </Button>
             <div className="flex items-center"></div>
           </div>
-          <Search />
+          <SearchBar />
           <div className="flex items-center gap-sm w-fit">
             <Button
               variant={ButtonVariant.bordered}
