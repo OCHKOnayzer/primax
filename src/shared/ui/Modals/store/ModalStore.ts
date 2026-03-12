@@ -1,17 +1,18 @@
 import { create } from "zustand";
-
-type CurrentModal = "SideMenuModal" | null;
+import { CurrentModalEnum } from "./types";
 
 interface ModalState {
   isOpen: boolean;
-  currentModal: CurrentModal;
+  currentModal: CurrentModalEnum | null;
   openModalWindow: () => void;
   closeModalWindow: () => void;
+  setCurrentModal: (current: CurrentModalEnum) => void;
 }
 
 export const useModal = create<ModalState>((set) => ({
   isOpen: false,
   currentModal: null,
   openModalWindow: () => set({ isOpen: true }),
-  closeModalWindow: () => set({ isOpen: false }),
+  closeModalWindow: () => set({ isOpen: false, currentModal: null }),
+  setCurrentModal: (current) => set({ currentModal: current }),
 }));
