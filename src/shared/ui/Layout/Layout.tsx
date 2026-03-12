@@ -1,34 +1,32 @@
 "use client";
 
-import React, { FC, PropsWithChildren, useEffect } from "react";
+import React, { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Header } from "@/widgets";
 import { Footer } from "@/widgets";
 import { ModalLayout } from "@/shared";
 import { useModal } from "@/shared";
 
-
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const { isOpen } = useModal();
 
-  useEffect(()=>{ 
-    if(isOpen){ 
+  useEffect(() => {
+    if (isOpen) {
       document.body.style.overflow = "hidden";
-    }else{ 
+    } else {
       document.body.style.overflow = "";
     }
 
-    return ()=>{ 
+    return () => {
       document.body.style.overflow = "";
-    }
-  },[isOpen])
-
+    };
+  }, [isOpen]);
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       {isOpen && <ModalLayout />}
-      <main className="flex-1 relative">
-        <div className="flex justify-center">{children}</div>
+      <main className="flex items-center justify-center flex-1 relative">
+        <div className="w-[80%]">{children}</div>
       </main>
       <Footer />
     </div>
