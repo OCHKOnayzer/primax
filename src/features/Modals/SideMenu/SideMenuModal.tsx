@@ -2,11 +2,11 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useModal } from "@/shared";
-import { Button } from "@/shared";
-import { ButtonVariant, ButtonType } from "@/shared/ui/Button";
+import { Button, ButtonVariant, ButtonType } from "@/shared";
 import { CommonSize } from "@/types";
 import { SideMenuList } from "./ui";
 import { useControls } from "./hooks";
+import { FiX } from "react-icons/fi";
 
 export const SideMenuModal = ({
   isAnimatingClose,
@@ -19,19 +19,22 @@ export const SideMenuModal = ({
 
   useEffect(() => {
     if (isOpen && !closing) start();
-  }, [isOpen, closing]);
+  }, [start, isOpen, closing]);
 
   useEffect(() => {
     if (isAnimatingClose && !closing) handleClose();
-  }, [isAnimatingClose, closing]);
+  }, [handleClose, isAnimatingClose, closing]);
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="side-menu"
           key="side-menu"
           className="flex h-fit w-fit"
-          initial={{ x: "-100%", backdropFilter: "blur(0px)" }}
+          initial={{ x: "-100%" }}
           animate={controls}
         >
           <SideMenuList />
@@ -46,7 +49,7 @@ export const SideMenuModal = ({
             size={CommonSize.md}
             disabled={closing}
           >
-            x
+            <FiX className="h-8 w-4" />
           </Button>
         </motion.div>
       )}
