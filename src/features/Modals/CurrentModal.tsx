@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import { SideMenuModal } from "./SideMenu";
+import { ProductPreview } from "./ProductPreview";
 import { useModal } from "@/shared";
 
 const MODAL_COMPONENTS = {
   SideMenuModal: SideMenuModal,
+  ProductPreview: ProductPreview,
 } as const;
 
 export const CurrentModal = () => {
