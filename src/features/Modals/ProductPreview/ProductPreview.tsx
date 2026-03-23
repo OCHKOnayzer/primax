@@ -48,8 +48,8 @@ export const ProductPreview = () => {
                   </Button>
                 </div>
               </div>
-              
-                <div>name</div>
+
+              <div>name</div>
             </div>
           </div>
         </div>
