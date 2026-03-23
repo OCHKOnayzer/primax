@@ -18,7 +18,7 @@ export const ModalLayout = () => {
             backdropFilter: "blur(5px)",
           }}
           transition={{ type: "spring", stiffness: 100, damping: 18 }}
-          className="absolute h-full w-full z-20"
+          className="fixed h-full w-full z-20"
         >
           <CurrentModal />
         </MotionDiv>
