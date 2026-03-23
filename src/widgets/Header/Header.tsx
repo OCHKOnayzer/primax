@@ -14,12 +14,6 @@ import { CommonSize } from "@/types";
 
 export const Header = () => {
   const openModalWindow = useModal((state) => state.openModalWindow);
-  const setCurrentModal = useModal((state) => state.setCurrentModal);
-
-  function openModal() {
-    openModalWindow();
-    setCurrentModal(CurrentModalEnum.SideMenuModal);
-  }
 
   const pathname = usePathname();
   const router = useRouter();
@@ -33,7 +27,7 @@ export const Header = () => {
               variant={ButtonVariant.bordered}
               type={ButtonType.button}
               size={CommonSize.sm}
-              onClick={() => openModal()}
+              onClick={() => openModalWindow(CurrentModalEnum.SideMenuModal)}
             >
               <Image src={"/menu.png"} height={32} width={32} alt="" />
             </Button>
