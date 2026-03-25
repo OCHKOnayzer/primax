@@ -1,59 +1,61 @@
-import React from "react";
-import Link from "next/link";
-import { AnimatePresence } from "framer-motion";
-import { Button, ButtonVariant, ButtonType, useModal } from "@/shared";
-import { CommonSize } from "@/types";
+import React, { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useModal } from "@/shared";
+import { ProductCard } from "./ui";
+import { useAnimatedModal } from "../Model";
 
-export const ProductPreview = () => {
-  const { closeModalWindow } = useModal();
+export const ProductPreview = ({
+  isAnimatingClose,
+}: {
+  isAnimatingClose: boolean;
+}) => {
+  const { controls, closing, start, handleClose } = useAnimatedModal({
+    onAnimationStart: (controls) =>
+      controls.start({
+        opacity: [0, 1],
+        scale: [0.92, 1],
+        y: [30, 0],
+        transition: {
+          duration: 0.35,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      }),
+
+    onAnimationEnd: (controls) =>
+      controls.start({
+        opacity: 0,
+        scale: 0.96,
+        y: 20,
+        transition: {
+          duration: 0.2,
+          ease: "easeInOut",
+        },
+      }),
+  });
+
+  const { isOpen } = useModal();
+
+  useEffect(() => {
+    if (isOpen && !closing) start();
+  }, [start, isOpen, closing]);
+
+  useEffect(() => {
+    if (isAnimatingClose && !closing) handleClose();
+  }, [handleClose, isAnimatingClose, closing]);
 
   return (
     <AnimatePresence>
-      <div className=" w-full h-full flex justify-center items-center">
-        <div className="w-1/2 bg-gray-100 rounded-3xl overflow-hidden p-2">
-          <div className="flex flex-row gap-sm">
-            <div className="h-[70vh] w-1/2 rounded-2xl"></div>
-            <div className="flex flex-col gap-sm w-1/2 rounded-2xl bg-white p-6">
-              <div className="flex flex-row justify-between">
-                <div className="flex gap-sm items-center">
-                  <Link
-                    className="bg-gray-50 p-2 rounded-2xl text-sm hover:bg-gray-100 transition"
-                    href={"/"}
-                  >
-                    compony
-                  </Link>
-
-                  <Button
-                    size={CommonSize.md}
-                    variant={ButtonVariant.bordered}
-                    type={ButtonType.button}
-                    className="bg-gray-50 text-sm hover:bg-gray-100 transition"
-                  >
-                    original
-                  </Button>
-                </div>
-                <div className="flex gap-sm items-center">
-                  <Button
-                    size={CommonSize.md}
-                    variant={ButtonVariant.bordered}
-                    type={ButtonType.button}
-                  ></Button>
-                  <Button
-                    onClick={closeModalWindow}
-                    size={CommonSize.md}
-                    variant={ButtonVariant.bordered}
-                    type={ButtonType.button}
-                  >
-                    close
-                  </Button>
-                </div>
-              </div>
-
-              <div>name</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-preview"
+        key="product-preview"
+        animate={controls}
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="h-full w-full flex justify-center items-center"
+      >
+        <ProductCard close={handleClose} />
+      </motion.div>
     </AnimatePresence>
   );
 };
