@@ -5,7 +5,7 @@ import { useModal } from "@/shared";
 import { Button, ButtonVariant, ButtonType } from "@/shared";
 import { CommonSize } from "@/types";
 import { SideMenuList } from "./ui";
-import { useControls } from "./hooks";
+import { useAnimatedModal } from "../Model";
 import { FiX } from "react-icons/fi";
 
 export const SideMenuModal = ({
@@ -15,7 +15,18 @@ export const SideMenuModal = ({
 }) => {
   const isOpen = useModal((state) => state.isOpen);
 
-  const { controls, closing, start, handleClose } = useControls();
+  const { controls, closing, start, handleClose } = useAnimatedModal({
+    onAnimationStart: (controls) =>
+      controls.start({
+        x: 0,
+        transition: { type: "spring", stiffness: 100, damping: 18 },
+      }),
+    onAnimationEnd: (controls) =>
+      controls.start({
+        x: "-150%",
+        transition: { duration: 0.3, ease: "easeInOut" },
+      }),
+  });
 
   useEffect(() => {
     if (isOpen && !closing) start();
