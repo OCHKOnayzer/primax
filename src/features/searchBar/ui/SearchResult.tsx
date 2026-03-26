@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence } from "framer-motion";
-import { div as MotionDiv } from "framer-motion/client";
+// import { div as MotionDiv } from "framer-motion/client";
 
 export const SearchResult = ({ searchText }: { searchText: string }) => {
   return (

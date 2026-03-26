@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { SideMenuModal } from "./SideMenu";
-import { ProductPreview } from "./ProductPreview";
+import { SideMenuModal } from "./sideMenu";
+import { ProductPreview } from "./productPreview";
 import { useModal } from "@/shared";
 
 const MODAL_COMPONENTS = {

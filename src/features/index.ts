@@ -1,2 +1,2 @@
-export { SearchBar } from "./SearchBar";
-export { CurrentModal } from "./Modals";
+export { SearchBar } from "./searchBar";
+export { CurrentModal } from "./modals";

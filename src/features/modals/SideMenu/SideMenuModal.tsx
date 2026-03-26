@@ -5,7 +5,7 @@ import { useModal } from "@/shared";
 import { Button, ButtonVariant, ButtonType } from "@/shared";
 import { CommonSize } from "@/types";
 import { SideMenuList } from "./ui";
-import { useAnimatedModal } from "../Model";
+import { useAnimatedModal } from "../model";
 import { FiX } from "react-icons/fi";
 
 export const SideMenuModal = ({

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "@/shared";
 import { ProductCard } from "./ui";
-import { useAnimatedModal } from "../Model";
+import { useAnimatedModal } from "../model";
 
 export const ProductPreview = ({
   isAnimatingClose,
