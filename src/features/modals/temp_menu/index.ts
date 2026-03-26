@@ -1,1 +1,0 @@
-export { SideMenuModal } from "./SideMenuModal";

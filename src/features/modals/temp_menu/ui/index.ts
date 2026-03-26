@@ -1,1 +1,0 @@
-export { SideMenuList } from "./SideMenuList";
