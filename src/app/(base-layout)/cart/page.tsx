@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Cart } from "@/features/Cart/Cart";
+import { Cart } from "@/features/cart/Cart";
 
 const page = () => {
   return <Cart />;
